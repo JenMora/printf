@@ -5,7 +5,7 @@
 
 /**
  * _printf - produce output as per format
- * putchar - functtion description
+ * _putchar - functtion description
  * @c: parameter
  * Return: Num of characters printed
  * includes '\0' byte used at the end of strings
@@ -30,8 +30,7 @@ int _printf(const char *format, ...)
 				case 'c':
 				{
 					int c = va_arg(list, int);
-					putchar(c);
-					printed_chars++;
+					printed_chars += putchar(c);
 					break;
 				}
 				case 's':
@@ -40,16 +39,14 @@ int _printf(const char *format, ...)
 
 					while (*s != '\0')
 					{
-						putchar(*s);
+						printed_chars += putchar(*s);
 						s++;
-						printed_chars++;
 					}
 					break;
 				}
 				case '%':
 				{
-					putchar('%');
-					printed_chars++;
+					printed_chars += putchar('%');
 					break;
 				}
 				default:
@@ -58,8 +55,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			putchar(*format);
-		       	printed_chars++;
+		printed_chars += putchar(*format);
 		}
 		format++;
 	}
