@@ -40,6 +40,7 @@ int _printf(const char *format, ...)
 				case 's':
 				{
 					char *s = va_arg(list, char *);
+
 					while (*s != '\0')
 					{
 						putchar(*s);
