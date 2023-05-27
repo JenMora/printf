@@ -15,11 +15,8 @@ int _putchar(int c);
 
 int _printf(const char *format, ...)
 {
-	int i;
-	int c;
+	int printed_chars = 0;
 	va_list list;
-
-	i = 0;
 	va_start(list, format);
 
 	while (*format != '\0')
@@ -32,9 +29,9 @@ int _printf(const char *format, ...)
 			{
 				case 'c':
 				{
-					c = va_arg(list, int);
+					int c = va_arg(list, int);
 					putchar(c);
-					i++;
+					printed_chars++;
 					break;
 				}
 				case 's':
@@ -45,14 +42,14 @@ int _printf(const char *format, ...)
 					{
 						putchar(*s);
 						s++;
-						i++;
+						printed_chars++;
 					}
 					break;
 				}
 				case '%':
 				{
 					putchar('%');
-					i++;
+					printed_chars++;
 					break;
 				}
 				default:
@@ -62,11 +59,11 @@ int _printf(const char *format, ...)
 		else
 		{
 			putchar(*format);
-			i++;
+		       	printed_chars++;
 		}
 		format++;
 	}
 	va_end(list);
 
-	return (i);
+	return (printed_chars);
 }
