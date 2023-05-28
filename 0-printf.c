@@ -1,4 +1,6 @@
 #include "main.h"
+
+
 /**
  * _printf - a function that produces output according to format
  * @pbuff: the collection of characters
@@ -28,7 +30,7 @@ int _printf(const char *format, ...)
 			pbuff[buffn++] = format[i];
 			if (buffn == SIZE_B)
 				buff_prt(pbuff, &buffn);
-			ptrdc++;
+			prtdc++;
 		}
 		else
 		{
@@ -63,6 +65,6 @@ int _printf(const char *format, ...)
 void buff_prt(char pbuff[], int *buffn)
 {
 	if (*buffn > 0)
-		write(i, &pbuff[0], *buffn);
+		write(1, &pbuff[0], *buffn);
 	*buffn = 0;
 }
