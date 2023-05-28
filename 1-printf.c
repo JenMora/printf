@@ -4,7 +4,7 @@
 
 
 int _putchar(int c);
-int _printf(const char *format, ...)
+int my1_printf(const char *format, ...)
 {
 	int i;
 	va_list list;

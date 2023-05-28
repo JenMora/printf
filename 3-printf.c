@@ -6,7 +6,7 @@
 /**
  */
 int _putchar(int c);
-int my_printf(const char *format, ...)
+int my2_printf(const char *format, ...)
 {
 	int i;
 	va_list list;
