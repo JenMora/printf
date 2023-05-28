@@ -1,67 +1,68 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdarg.h>
-#include <limits.h>
-
 /**
- * _printf - produce output as per format
- * _putchar - functtion description
- * @c: parameter
- * Return: Num of characters printed
- * includes '\0' byte used at the end of strings
+ * _printf - a function that produces output according to format
+ * @pbuff: the collection of characters
+ * @buffn: element of array depending on char length
+ * Return: the printed characters from string
+ *
+ * Author: MAgdaline N.
  */
 
-int _putchar(int c);
-
+void buff_prt(char pbuff[], int *buffn);
 int _printf(const char *format, ...)
 {
-	int printed_chars = 0;
+	int i, prt = 0, prtdc = 0, flags, width, precision;
+	int size, buffn = 0;
+	char pbuff[SIZE_B];
 	va_list list;
+
+	if (format == NULL)
+		return (-1);
 
 	va_start(list, format);
 
-	while (*format != '\0')
+	for (i = 0; format && format[i] != '\0'; i++)
 	{
-		if (*format == '%')
+		if (format[i] != '\0')
 		{
-			format++;
-
-			switch (*format)
-			{
-				case 'c':
-				{
-					int c = va_arg(list, int);
-
-					printed_chars += putchar(c);
-					break;
-				}
-				case 's':
-				{
-					char *s = va_arg(list, char *);
-
-					while (*s != '\0')
-					{
-						printed_chars += putchar(*s);
-						s++;
-					}
-					break;
-				}
-				case '%':
-				{
-					printed_chars += putchar('%');
-					break;
-				}
-				default:
-					break;
-			}
+			pbuff[buffn++] = format[i];
+			if (buffn == SIZE_B)
+				buff_prt(pbuff, &buffn);
+			ptrdc++;
 		}
 		else
 		{
-		printed_chars += putchar(*format);
+			buff_prt(pbuff, &buffn);
+			flags = get_flags(format, &i);
+			width = get_width(format, &i, list);
+			precision = get_precision(format, &i, list);
+			size = get_size(format, &i);
+			++i;
+			prt = handle_print(format, &i, list, pbuff, flags,
+					width, precision, size);
+			if (prt == -1)
+				return (-1);
+			prtdc += prt;
 		}
-		format++;
 	}
+	buff_prt(pbuff, &buffn);
+
 	va_end(list);
 
-	return (printed_chars);
+	return (prtdc);
+}
+
+/**
+ * buff_prt - stores characters
+ * @pbuff: the collection of characters
+ * @buffn: element of array depending on char length
+ *
+ * Author: MAgdaline N.
+ */
+
+void buff_prt(char pbuff[], int *buffn)
+{
+	if (*buffn > 0)
+		write(i, &pbuff[0], *buffn);
+	*buffn = 0;
 }
