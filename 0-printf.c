@@ -17,6 +17,7 @@ int _printf(const char *format, ...)
 {
 	int printed_chars = 0;
 	va_list list;
+
 	va_start(list, format);
 
 	while (*format != '\0')
@@ -30,6 +31,7 @@ int _printf(const char *format, ...)
 				case 'c':
 				{
 					int c = va_arg(list, int);
+
 					printed_chars += putchar(c);
 					break;
 				}
