@@ -54,7 +54,22 @@ va_list list, char buffer[], int flags, int width, int precision, int size);
 
 
 /****************** FUNCTIONS ******************/
+/* prototypes for printf/ 0-prinf.c */
+void buff_prt(char pbuff[], int *buffn);
+int _printf(const char *format, ...);
 
+/* prototypes for function1.c */
+int un_num(va_list n, char pbuff[],
+		int flags, int width, int precision, int size);
+int prtOCTAL(va_list n, char pbuff[],
+		int flags, int width, int precision, int size);
+int hexa_lower(va_list n, char pbuff[], int flags,
+		int width, int precision, int size);
+int hexa_upper(va_list n, char pbuff[], int flags, int width,
+		int precision, int size);
+int print_hexa(va_list n, char map_to[], char pbuff[],
+		int flags, char flags1,
+		int width, int precision, int size);
 
 /* Funtions to print chars and strings */
 
