@@ -7,7 +7,7 @@
  * @buffn: element of array depending on char length
  * Return: the printed characters from string
  *
- * Author: MAgdaline N.
+ * Authors: MAgdaline N. and Jeniffer Moraa
  */
 
 void buff_prt(char pbuff[], int *buffn);
