@@ -1,8 +1,5 @@
 #include "main.h"
-
-
 /* for printing unsigned integers */
-
 /**
  * un_num - prints unsigned numbers
  * @n: list of arguments
@@ -15,13 +12,16 @@
  *
  * Authors: Magdalinr N and Jeniffer Moraa
  */
-
-int un_num(va_list n, char pbuff[], int flags, int width, int precision, int size)
+int un_num(va_list n, char pbuff[],
+		int flags, int width, int precision, int size)
 {
 	int i;
+
 	i = SIZE_B - 2;
 
 	unsigned long int num = va_arg(n, unsigned long int);
+
+	num  = new_unSize(num, size);
 
 	if (num == 0)
 		pbuff[i--] = '0';
@@ -35,11 +35,9 @@ int un_num(va_list n, char pbuff[], int flags, int width, int precision, int siz
 	}
 	i++;
 
-	return (write_un(0, i, pbuff, flags, width, precision, size);)
+	return (write_un(0, i, pbuff, flags, width, precision, size));
 }
-
 /* octaal unsigned numbers printed */
-
 /**
  * prtOCTAL - prints octal
  * @n: number of arguments
@@ -52,10 +50,11 @@ int un_num(va_list n, char pbuff[], int flags, int width, int precision, int siz
  *
  * Author: Magdaline N and Jeniffer Moraa
  */
-
-int prtOCTAL(va_list n, char pbuff[], int flags, int width, int precision, int size)
+int prtOCTAL(va_list n, char pbuff[],
+		int flags, int width, int precision, int size)
 {
 	int i;
+
 	i = SIZE_B - 2;
 
 	unsigned long int num = va_arg(n, unsigned long int);
@@ -75,15 +74,12 @@ int prtOCTAL(va_list n, char pbuff[], int flags, int width, int precision, int s
 		num /= 8;
 	}
 
-	if (flags & F_HASH && num1 != 0){
+	if (flags & F_HASH && num1 != 0)
 		pbuff[i--] = '0';
 	i++;
-
 	return (write_un(0, i, pbuff, flags, width, precision, size));
 }
-
 /* print haxadecimal number lower case a-f */
-
 /**
  * hexa_lower - prints lower hexa decila values
  * @n: arrays of numbers
@@ -96,14 +92,13 @@ int prtOCTAL(va_list n, char pbuff[], int flags, int width, int precision, int s
  *
  * Authror - Magdaline N
  */
-int hexa_lower(va_list n, char pbuff[], int flags, 'x', width, precision, size)
+int hexa_lower(va_list n, char pbuff[], int flags,
+		int width, int precision, int size)
 {
 	return (_hexa(n, "0123456789abcdef", pbuff, flags, 'x',
 				width, precision, size));
 }
-
 /* print HEXADECIMAL in UPPER */
-
 /**
  * hexa_upper - prints hexa in UPPER
  * @n: the array of numbers
@@ -114,15 +109,14 @@ int hexa_lower(va_list n, char pbuff[], int flags, 'x', width, precision, size)
  * @size: checks for size
  * Return: values printed
  */
-int hexa_upper(va_list n, char pbuff[], int flags, 'X', int width, 
+int hexa_upper(va_list n, char pbuff[], int flags, int width,
 		int precision, int size)
 {
-	return (_hexa(n, "0123456789ABCDEF", pbuff, 
+	return (_hexa(n, "0123456789ABCDEF", pbuff,
 				flags, 'X', width, precision, size));
 }
 
 /* prints hexa in both lower and UPPER */
-
 /**
  * print_hexa - prints both upper and lower hexa values
  * @n: array
@@ -134,11 +128,11 @@ int hexa_upper(va_list n, char pbuff[], int flags, 'X', int width,
  * @precision: checks the precision
  * @size: checks the size
  * @size: checks the size
- * Return: printed values 
+ * Return: printed values
  */
-
-int print_hexa(va_list n, char map_to[], char pbuff[], 
-		int flags, char flags1, int width, int precision, int size)
+int print_hexa(va_list n, char map_to[], char pbuff[],
+		int flags, char flags1,
+		int width, int precision, int size)
 {
 	int i = SIZE_B - 2;
 	unsigned long int num = va_arg(n, unsigned long int);
@@ -152,7 +146,7 @@ int print_hexa(va_list n, char map_to[], char pbuff[],
 		buffer[i--] = '0';
 
 	pbuff[SIZE_B - 1] = '\0';
-	
+
 	while (num > 0)
 	{
 		pbuff[i--] = map_to[num % 16];
