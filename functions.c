@@ -51,14 +51,14 @@ if (width > length)
 {
 if (flags & F_MINUS)
 {
-write(1, &str[0], length);
+write(1, &s[0], length);
 for (j = width - length; j > 0; j--)
 write(1, " ", 1);
 return (width);
 }
 else
 {
-for (j = width - length; j > 0; i--)
+for (j = width - length; j > 0; j--)
 write(1, " ", 1);
 write(1, &s[0], length);
 return (width);
@@ -102,7 +102,7 @@ return (write(1, "%%", 1));
 int print_int(va_list types, char buffer[],
 int flags, int width, int precision, int size)
 {
-int j = SIZE_B - 2;
+int j = BUFF_SIZE - 2;
 int is_negative = 0;
 long int n = va_arg(types, long int);
 unsigned long int num;
