@@ -50,7 +50,7 @@ int un_num(va_list n, char pbuff[], int flags, int width, int precision, int siz
  * @size: checks size
  * Return: Printed characters
  *
- * Author: Magdaline N
+ * Author: Magdaline N and Jeniffer Moraa
  */
 
 int prtOCTAL(va_list n, char pbuff[], int flags, int width, int precision, int size)
