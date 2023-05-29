@@ -2,20 +2,20 @@
 
 
 /**
- * _printf - a function that produces output according to format
- * @pbuff: the collection of characters
- * @buffn: element of array depending on char length
+ * print_buffer - a function that produces output according to format
+ * @buffer: the collection of characters
+ * @buff_ind: element of array depending on char length
  * Return: the printed characters from string
  *
- * Authors: MAgdaline N. and Jeniffer Moraa
+ * Authors: Magdaline N. and Jeniffer Moraa
  */
 
-void buff_prt(char pbuff[], int *buffn);
+void print_buffer(char buffer[], int *buff_ind);
 int _printf(const char *format, ...)
 {
-	int i, prt = 0, prtdc = 0, flags, width, precision;
-	int size, buffn = 0;
-	char pbuff[SIZE_B];
+	int i, printed = 0, printed_chars = 0, flags, width, precision;
+	int size, buff_ind = 0;
+	char buffer[BUFF_SIZE];
 	va_list list;
 
 	if (format == NULL)
@@ -27,44 +27,42 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] != '\0')
 		{
-			pbuff[buffn++] = format[i];
-			if (buffn == SIZE_B)
-				buff_prt(pbuff, &buffn);
-			prtdc++;
+			buffer[buff_ind++] = format[i];
+			if (buff_ind == BUFF_SIZE)
+				print_buffer(buffer, &buff_ind);
+			printed_chars++;
 		}
 		else
 		{
-			buff_prt(pbuff, &buffn);
+			print_buffer(buffer, &buff_ind);
 			flags = get_flags(format, &i);
 			width = get_width(format, &i, list);
 			precision = get_precision(format, &i, list);
 			size = get_size(format, &i);
 			++i;
-			prt = handle_print(format, &i, list, pbuff, flags,
+			printed = handle_print(format, &i, list, buffer, flags,
 					width, precision, size);
-			if (prt == -1)
+			if (printed == -1)
 				return (-1);
-			prtdc += prt;
+			printed_chars += printed;
 		}
 	}
-	buff_prt(pbuff, &buffn);
+	print_buffer(buffer, &buff_ind);
 
 	va_end(list);
 
-	return (prtdc);
+	return (printed_chars);
 }
 
 /**
- * buff_prt - stores characters
- * @pbuff: the collection of characters
- * @buffn: element of array depending on char length
- *
- * Author: MAgdaline N.
+ * print_buffer - stores characters
+ * @buffer: the collection of characters
+ * @buff_ind: element of array depending on char length
  */
 
-void buff_prt(char pbuff[], int *buffn)
+void print_buffer(char buffer[], int *buff_ind)
 {
-	if (*buffn > 0)
-		write(1, &pbuff[0], *buffn);
-	*buffn = 0;
+	if (*buff_ind > 0)
+		write(1, &buffer[0], *buff_ind);
+	*buff_ind = 0;
 }
