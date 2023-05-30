@@ -1,5 +1,6 @@
 #include "main.h"
 /*PRINT POINTER*/
+/* Authors - Jeniffer Moraa & Magdaline Njuguna */
 /**
 *print_pointer - A function that prints the value of a pointer variable
 *@types: arguments list
