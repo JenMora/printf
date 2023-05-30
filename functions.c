@@ -1,5 +1,6 @@
 #include "main.h"
 /*PRINT CHAR */
+/* Authors - Jeniffer Moraa & Magdaline Njuguna */
 /**
 *print_char - Prints a character
 *@size: the size specifier
