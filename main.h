@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-
+/* Authors - Jeniffer Moraa & Magdaline Njuguna */
 /* FLAGS */
 
 #define F_MINUS 1
