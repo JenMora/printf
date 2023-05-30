@@ -1,6 +1,6 @@
 #include "main.h"
 /* write handlers */
-
+/* Authors - Jeniffer Moraa & Magdaline Njuguna */
 /**
 *  * handle_write_char - a function that prints a string
 *   * @c: character string
