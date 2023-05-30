@@ -48,5 +48,5 @@ return (unknow_len);
 return (printed_chars);
 }
 
-
+/* Authors - Jeniffer Moraa & Magdaline Njuguna */
 
