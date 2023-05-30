@@ -1,5 +1,5 @@
 #include "main.h"
-
+/* Authors - Jeniffer Moraa & Magdaline Njuguna */
 
 /**
 *get_flags - Calculates active flags
