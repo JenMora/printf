@@ -1,4 +1,5 @@
 #include "main.h"
+/* Authors - Jeniffer Moraa & Magdaline Njuguna */
 /**
 *get_size - Calculates the size to cast the argument
 *@format: Formatted string in which to print the arguments
