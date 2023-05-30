@@ -1,6 +1,6 @@
 #include "main.h"
 /* get precision */
-
+/* Authors - Jeniffer Moraa & Magdaline Njuguna */
 /**
  * get_precision - checks for precision
  * @format: character string
